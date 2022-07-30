@@ -1,8 +1,8 @@
 const BIRD = document.getElementById('bird');
 const BACKGROUND = document.getElementById('main');
-const pipeTop = 'pipe_top';
-const pipeBottom = 'pipe_bottom';
 const PIPETOP = document.getElementById('pipe_top');
+const PIPEBOTTOM = document.getElementById('pipe_bottom');
+const PIPE = document.getElementById('pipe');
 
 //console.log(BIRD);
 //console.log(BACKGROUND);
@@ -59,17 +59,20 @@ BACKGROUND.onclick = flyBird;
 function pipeToGo(elem) {
   indexX -= 10;
   setTimeout( function () {
-    elem.style.transform = `translateX(${indexX}px)`;
-    if(elem.style.background === 'black') {
-      elem.style.background = 'red';
-    } else elem.style.background === 'black';
-    if(indexX > -850) {
+    elem.style.transform = `translate(${indexX}px)`;
+    if(indexX > -860) {
+      setTimeout(function() {
+        elem.style.transition = '.3s';
+      }, 90)
       pipeToGo(elem);
     } else {
-      elem.sty
+      elem.style.transition = '0s';
+      indexX = 0;
+      pipeToGo(elem);
     }}, 100)
 }
 
 let indexX = 0;
-pipeToGo(PIPETOP);
+pipeToGo(PIPE);
+// pipeToGo(PIPETOP);
 
