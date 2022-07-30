@@ -56,18 +56,20 @@ const flyBird = function () {
 BACKGROUND.onclick = flyBird;
 
 //Движение труб
-function pipeToGo() {
+function pipeToGo(elem) {
   indexX -= 10;
   setTimeout( function () {
-    PIPETOP.style.transform = `translateX(${indexX}px)`;
-    if(PIPETOP.style.background === 'black') {
-      PIPETOP.style.background = 'red';
-    } else PIPETOP.style.background === 'black';
-    if(indexX > -600) {
-      pipeToGo();
-    }}, 300)
+    elem.style.transform = `translateX(${indexX}px)`;
+    if(elem.style.background === 'black') {
+      elem.style.background = 'red';
+    } else elem.style.background === 'black';
+    if(indexX > -850) {
+      pipeToGo(elem);
+    } else {
+      elem.sty
+    }}, 100)
 }
 
 let indexX = 0;
-pipeToGo();
+pipeToGo(PIPETOP);
 
