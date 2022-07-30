@@ -58,3 +58,5 @@ function generatePipeToGo(pipeItem, pipes) {
 
 let indexX = 0;
 generatePipeToGo(PIPETOP, PIPE);
+
+console.log(document)
