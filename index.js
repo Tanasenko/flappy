@@ -69,10 +69,9 @@ goBottom();
 
 //Реализация полета
 const flyBird = function () {
-  clearTimeout(timerId);
-  let positionNow = getCoords();
-  BIRD.style.top = positionNow.top - 100 + 'px';
-  goBottom();
+  x -= 50;
+  BIRD.style.transform = `translateY(${x}px)`;
+  
 }
 
 BACKGROUND.onclick = flyBird;
