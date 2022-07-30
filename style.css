@@ -4,7 +4,7 @@
 
 body {
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 10px;
   background-color: aqua;
   display: flex;
 }
@@ -38,7 +38,15 @@ body {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  bottom: 0;
+  right: -60px;
+}
+
+.new{
   position: absolute;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
   bottom: 0;
   right: -60px;
 }

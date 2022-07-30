@@ -36,14 +36,15 @@ function pipeToGo(elem) {
     elem.style.transform = `translate(${indexX}px)`;
     if(indexX > -860) {
       setTimeout(function() {
-        elem.style.transition = '.3s';
+        elem.style.transition = '.3s';  
       }, 90)
       pipeToGo(elem);
     } else {
       elem.style.transition = '0s';
       indexX = 0;
       elem.remove();
-    }}, 100)
+      generatePipeElem()
+    }}, 100);
 }
 
 //Random
@@ -56,5 +57,43 @@ function generatePipeToGo(pipeItem, pipes) {
   pipeToGo(pipes);
 }
 
+function generatePipeElem() {
+  let pipe = document.createElement('div');
+  pipe.className = 'flex, new';
+  // pipe.id = 'new'; 
+  BACKGROUND.append(pipe);
+
+  let pipeTop = document.createElement('span');
+  pipeTop.className = 'pipe';
+  pipeTop.id = 'pipe_top';
+  pipe.append(pipeTop);
+
+  let pipeBottom = document.createElement('span');
+  pipeBottom.className = 'pipe';
+  pipeBottom.id = 'pipe_bottom';
+  pipe.append(pipeBottom);
+
+  console.log('создал див');
+
+  generatePipeToGo(pipeTop, pipe)
+  //pipeToGo(pipe);
+}
+
 let indexX = 0;
-generatePipeToGo(PIPETOP, PIPE);
+//generatePipeToGo(PIPETOP, PIPE);
+//setTimeout(generatePipeElem(), 1000);
+// for (let i = 0; i < 3; i++) {
+//   setTimeout(generatePipeElem(), 3000)
+// }
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+generatePipeElem()
+sleep(2000);
+generatePipeElem()
+
