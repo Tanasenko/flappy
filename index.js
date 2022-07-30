@@ -1,5 +1,8 @@
 const BIRD = document.getElementById('bird');
 const BACKGROUND = document.getElementById('main');
+const pipeTop = 'pipe_top';
+const pipeBottom = 'pipe_bottom';
+const PIPETOP = document.getElementById('pipe_top');
 
 //console.log(BIRD);
 //console.log(BACKGROUND);
@@ -9,7 +12,7 @@ const getCoords = function (elem) {
   elem = BIRD;
   let box = elem.getBoundingClientRect();
 
-  //console.log(box)
+  // console.log(box);
 
   return {
     top: box.top /*+ scrollY*/,
@@ -18,6 +21,7 @@ const getCoords = function (elem) {
     right: box.right /*+ screenX*/
   }
 }
+
 let timerId;
 //Функция падения птички
 function goBottom() {
@@ -26,15 +30,15 @@ function goBottom() {
   timerId = setTimeout(function () {
     x += 10
     BIRD.style.top = positionNow.top + x +'px';
-    //console.log(BIRD.style.top);
+    // console.log('setTimout' ,positionNow.top);
     if (x < 290) {
       goBottom();
     }
-    /*if (BIRD.style.top > '600px'){
-      console.log('yay');
+    if (BIRD.style.top > '600px'){
+      // console.log('yay');
       BIRD.style.top = '300px';
       clearTimeout(timerId);
-    }*/
+    }
   }, 300)
 }
 
@@ -50,3 +54,20 @@ const flyBird = function () {
 }
 
 BACKGROUND.onclick = flyBird;
+
+//Движение труб
+function pipeToGo() {
+  indexX -= 10;
+  setTimeout( function () {
+    PIPETOP.style.transform = `translateX(${indexX}px)`;
+    if(PIPETOP.style.background === 'black') {
+      PIPETOP.style.background = 'red';
+    } else PIPETOP.style.background === 'black';
+    if(indexX > -600) {
+      pipeToGo();
+    }}, 300)
+}
+
+let indexX = 0;
+pipeToGo();
+
